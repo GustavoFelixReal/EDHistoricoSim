@@ -39,26 +39,13 @@ public class HistoricoController {
 	}
 	
 	public static boolean validaUrl(String url) {
-		String[] dominios = new String[]{ ".com", ".co", ".uk", ".br", ".org", ".tk", ".info", ".net", ".it" };
+		String[] vetSite = url.split("\\.");
 		
-		if (url.contains("http://") && url.contains("www.")) {
-			int dominioCont = 0;
-			
-			for (int i = 0; i < dominios.length; i ++) {
-				if (url.contains(dominios[i])) {
-					dominioCont++;
-				}
-			}
-			
-			if (dominioCont == 0) {
-				return false;
-			}
-			
-		} else {
-			return false;
+		if (vetSite[0].equals("http://www") && vetSite.length >= 3) {
+			return true;
 		}
 		
-		return true;
+		return false;
 	}
 
 }
